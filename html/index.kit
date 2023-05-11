@@ -20,7 +20,7 @@
 
 <body>
   <div class="background">
-
+    <img src="assets\images\bg-sidebar-mobile.svg" alt="">
   </div>
   <nav>
     <button class="step active">1</button>
@@ -31,36 +31,59 @@
 
   <main>
     <div class="description">
-      <h1>Personal info</h1>
-      <p>Please provide your name, email address, and phone number.</p>
+      <h1>Select your plan</h1>
+      <p>You have the option of monthly or yearly billing.</p>
     </div>
     <div class="input-container">
-      <div class="input-plan">
-        <h2>Arcade</h2>
-        <p>$9/mo</p>
+
+      <div class="input-plan active">
+        <div class="icon">
+          <img src="assets\images\icon-arcade.svg" alt="">
+        </div>
+        <div>
+          <h2>Arcade</h2>
+          <p>$9/mo</p>
+        </div>
       </div>
+
       <div class="input-plan">
-        <h2>Advanced</h2>
-        <p>$12/mo</p>
+        <div class="icon">
+          <img src="assets\images\icon-advanced.svg" alt="">
+        </div>
+        <div>
+          <h2>Advanced</h2>
+          <p>$12/mo</p>
+        </div>
       </div>
+
       <div class="input-plan">
-        <h2>Pro</h2>
-        <p>$15/mo</p>
+        <div class="icon">
+          <img src="assets\images\icon-pro.svg" alt="">
+        </div>
+        <div>
+          <h2>Pro</h2>
+          <p>$15/mo</p>
+        </div>
       </div>
       <div class="period-switch">
-        Monthly - Yearly
+        <div class="selected">Monthly</div>
+        <div>----</div>
+        <div>Yearly</div>
       </div>
     </div>
+
   </main>
-  
-  <div class="step-btns">
-    <button class="prev-step">Go Back</button>
-    <button class="next-step">Next step</button>
-  </div>
+
 
   <footer>
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Patrick</a>.
+    <div class="step-btns">
+      <button class="prev-step">Go Back</button>
+      <button class="next-step">Next step</button>
+    </div>
+    <div>
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Patrick</a>.
+    </div>
   </footer>
 </body>
 
