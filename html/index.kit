@@ -31,47 +31,85 @@
 
   <main>
     <div class="description">
-      <h1>Select your plan</h1>
-      <p>You have the option of monthly or yearly billing.</p>
+      <!-- STEP 1 -->
+      <div class="step-1 ">
+        <h1>Personal info</h1>
+        <p>Please provide your name, email address and phone number</p>
+      </div>
+      <!-- STEP 2 -->
+      <div class="step-2 innactive">
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
+      </div>
+      <!-- STEP 3 -->
+      <div class="step-3 innactive">
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhace your gaming experience.</p>
+      </div>
+      <!-- STEP 4 -->
+      <div class="step-3 innactive">
+        <h1>Finishing up</h1>
+        <p>Double-check everything looks OK before confirming.</p>
+      </div>
+
     </div>
     <div class="input-container">
-
-      <div class="input-plan active">
-        <div class="icon">
-          <img src="assets\images\icon-arcade.svg" alt="">
+      <!-- STEP 1 -->
+      <div class="step-1 ">
+        <div class="input-data">
+          <p>Name</p>
+          <div class="warning">This field is required!</div>
         </div>
-        <div>
-          <h2>Arcade</h2>
-          <p>$9/mo</p>
+        <input class="warning" type="text">
+        <div class="input-data">
+          <p>Email Address</p>
+          <div class="warning innactive">This field is required!</div>
         </div>
+        <input type="text">
+        <div class="input-data">
+          <p>Phone Number</p>
+          <div class="warning innactive">This field is required!</div>
+        </div>
+        <input type="text">
       </div>
+      <!-- STEP 2 -->
+      <div class="step-2 innactive">
+        <div class="input-plan active">
+          <div class="icon">
+            <img src="assets\images\icon-arcade.svg" alt="">
+          </div>
+          <div>
+            <h2>Arcade</h2>
+            <p>$9/mo</p>
+          </div>
+        </div>
 
-      <div class="input-plan">
-        <div class="icon">
-          <img src="assets\images\icon-advanced.svg" alt="">
+        <div class="input-plan">
+          <div class="icon">
+            <img src="assets\images\icon-advanced.svg" alt="">
+          </div>
+          <div>
+            <h2>Advanced</h2>
+            <p>$12/mo</p>
+          </div>
         </div>
-        <div>
-          <h2>Advanced</h2>
-          <p>$12/mo</p>
-        </div>
-      </div>
 
-      <div class="input-plan">
-        <div class="icon">
-          <img src="assets\images\icon-pro.svg" alt="">
+        <div class="input-plan">
+          <div class="icon">
+            <img src="assets\images\icon-pro.svg" alt="">
+          </div>
+          <div>
+            <h2>Pro</h2>
+            <p>$15/mo</p>
+          </div>
         </div>
-        <div>
-          <h2>Pro</h2>
-          <p>$15/mo</p>
+        <div class="period-switch">
+          <div class="selected">Monthly</div>
+          <div>----</div>
+          <div>Yearly</div>
         </div>
-      </div>
-      <div class="period-switch">
-        <div class="selected">Monthly</div>
-        <div>----</div>
-        <div>Yearly</div>
       </div>
     </div>
-
   </main>
 
 
