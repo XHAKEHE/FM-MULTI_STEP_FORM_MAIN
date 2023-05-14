@@ -77,6 +77,7 @@ nav {
 		border: 1px solid $Cool-gray;
 		border-radius: 50%;
 		background: none;
+		cursor: pointer;
 	}
 	.active {
 		background-color: $Light-blue;
@@ -102,75 +103,117 @@ main {
 	.input-container {
 		width: 90%;
 		margin-top: 1rem;
-		.step-1 {
-			//STEP 1
-			input {
+	}
+	.step-1 {
+		input {
+			color: $Marine-blue;
+			margin-bottom: 2rem;
+			width: 100%;
+			height: 2rem;
+			border-radius: 0.6rem;
+			font-weight: 600;
+			border: 1px solid $Light-gray;
+			letter-spacing: 0.1rem;
+		}
+		.warning {
+			border: 1px solid red;
+		}
+		.input-data {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.2rem;
+			font-size: 0.8rem;
+			p {
 				color: $Marine-blue;
-				margin-bottom: 2rem;
-				width: 100%;
-				height: 2rem;
-				border-radius: 0.6rem;
-				font-weight: 600;
-				border: 1px solid $Light-gray;
-				letter-spacing: 0.1rem;
 			}
 			.warning {
-				border: 1px solid red;
+				color: $Strawberry-red;
+				border: none;
 			}
-			.input-data {
-				display: flex;
-				justify-content: space-between;
-				margin-bottom: 0.2rem;
-				font-size: 0.8rem;
-				p {
-					color: $Marine-blue;
-				}
-				.warning {
-					color: $Strawberry-red;
-					border: none;
+		}
+	}
+	.step-2 {
+		.input-plan {
+			display: flex;
+			align-items: center;
+			padding: 0.5rem;
+			padding-left: 5vw;
+			margin: 0.5rem;
+			margin-top: 1.4rem;
+			margin-bottom: 1.4rem;
+			border: 0.1rem solid $Light-gray;
+			background-color: $Alabaster;
+			border-radius: 1rem;
+			cursor: pointer;
+
+			.icon {
+				width: 2.6rem;
+				height: 2.6rem;
+				margin-right: 1rem;
+				border-radius: 50%;
+				img {
+					object-fit: cover;
+					height: 100%;
+					width: 100%;
 				}
 			}
 		}
-		//STEP 2
-		.step-2 {
-			.input-plan {
+		.active {
+			border-color: $Marine-blue;
+			background-color: $Magnolia;
+		}
+		.period-switch {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			margin: 3rem 1rem 1.4rem 1rem;
+			.switch {
 				display: flex;
-				align-items: center;
-				padding: 0.5rem;
-				padding-left: 5vw;
-				margin: 0.5rem;
-				margin-top: 1.4rem;
-				margin-bottom: 1.4rem;
-				border: 0.1rem solid $Light-gray;
-				background-color: $Alabaster;
-				border-radius: 1rem;
 
-				.icon {
-					width: 2.6rem;
-					height: 2.6rem;
-					margin-right: 1rem;
-					border-radius: 50%;
-					img {
-						object-fit: cover;
-						height: 100%;
-						width: 100%;
+				input[type='checkbox'] {
+					// visibility: hidden;
+					display: none;
+					&:checked + label {
+						background-color: $Marine-blue;
+						&:before {
+							transform: translateX(30px);
+							background-color: $Alabaster;
+						}
+					}
+				}
+				label {
+					width: 60px;
+					height: 30px;
+					border-radius: 99em;
+					position: relative;
+					transition: transform 0.25s ease;
+					transform-origin: 50% 50%;
+					background-color: $Marine-blue;
+					cursor: pointer;
+
+					&:before {
+						transition: transform 0.25s ease;
+						content: '';
+						display: block;
+						margin: 5px;
+						width: 20px;
+						height: 20px;
+						background-color: $Alabaster;
+						border-radius: 50%;
+						// top: 12px;
+						// left: 12px;
 					}
 				}
 			}
-			.active {
-				border-color: $Marine-blue;
-				background-color: $Magnolia;
-			}
-			.period-switch {
-				display: flex;
-				justify-content: space-around;
-				margin: 3rem 1rem 1.4rem 1rem;
-				.selected {
-					font-weight: 600;
-					color: $Marine-blue;
-				}
+			.selected {
+				font-weight: 600;
+				color: $Marine-blue;
 			}
 		}
+	}
+	.step-3 {
+	}
+	.step-4 {
 	}
 }
 footer {
@@ -184,6 +227,7 @@ footer {
 	.step-btns {
 		display: flex;
 		justify-content: space-between;
+		
 		button {
 			margin: 1rem;
 			height: 2rem;
@@ -193,6 +237,7 @@ footer {
 			color: $Cool-gray;
 			font-size: 0.8rem;
 			font-weight: 600;
+			cursor: pointer;
 		}
 		.next-step {
 			background-color: $Marine-blue;
