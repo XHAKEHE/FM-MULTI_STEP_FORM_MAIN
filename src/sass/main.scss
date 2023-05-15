@@ -37,30 +37,28 @@ h1 {
 }
 h2 {
 	color: $Marine-blue;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin: 0.2rem;
 }
+
 p {
 	font-weight: 400;
 	margin: 0.2rem;
+}
+label {
+	cursor: pointer;
+}
+.row-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 
 .innactive {
 	display: none;
 }
-.background {
-	position: absolute;
-	background-color: #c88686;
-	top: 0px;
-	height: 30vh;
-	width: 100%;
-	z-index: -1;
-	img {
-		object-fit: cover;
-		height: 100%;
-		width: 100%;
-	}
-}
+
 nav {
 	// background-color: #fff;
 	height: 4rem;
@@ -95,8 +93,22 @@ main {
 	border-radius: 1rem;
 
 	display: flex;
+
 	flex-direction: column;
 	align-items: center;
+	.background {
+		position: absolute;
+		top: 0px;
+		background-color: #c88686;
+		height: 30vh;
+		width: 100%;
+		z-index: -1;
+		img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+	}
 	.description {
 		width: 90%;
 	}
@@ -137,7 +149,7 @@ main {
 			display: flex;
 			align-items: center;
 			padding: 0.5rem;
-			padding-left: 5vw;
+			// padding-left: 5vw;
 			margin: 0.5rem;
 			margin-top: 1.4rem;
 			margin-bottom: 1.4rem;
@@ -212,6 +224,64 @@ main {
 		}
 	}
 	.step-3 {
+		.input-addon {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0.4rem;
+			margin: 0.4rem;
+
+			margin-top: 1.4rem;
+			margin-bottom: 1.4rem;
+			border: 0.1rem solid $Light-gray;
+			background-color: $Alabaster;
+			border-radius: 1rem;
+
+			input {
+				// display: none;
+			}
+			input:checked + .input-checkbox {
+
+				// background-color: #c88686;
+			}
+			.input-checkbox {
+				margin: 0 1rem;
+				width: 24px;
+				height: 24px;
+				border: 0.1rem solid $Light-gray;
+				border-radius: 0.4rem;
+				background-image: url('/assets/images/icon-checkmark.svg');
+				background-position: center;
+				background-size: cover;
+				z-index: 10;
+
+				// .input-checkmark {
+				// 	width: 100%;
+				// 	height: 100%;
+				// 	background-color: burlywood;
+				// 	// background-image: url('assets\images\icon-checkmark.svg');
+				// 	// background-position: center;
+				// 	// background-size: 60%;
+
+				// }
+			}
+			.about {
+				p {
+					font-size: 12px;
+				}
+			}
+			.price {
+				color: $Purplish-blue;
+				font-size: 14px;
+				font-weight: 400;
+				margin: 0 0.4rem;
+			}
+		}
+		.active {
+			border-color: $Marine-blue;
+			background-color: $Magnolia;
+		}
 	}
 	.step-4 {
 	}
@@ -227,7 +297,7 @@ footer {
 	.step-btns {
 		display: flex;
 		justify-content: space-between;
-		
+
 		button {
 			margin: 1rem;
 			height: 2rem;

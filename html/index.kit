@@ -19,9 +19,7 @@
 </head>
 
 <body>
-  <div class="background">
-    <img src="assets\images\bg-sidebar-mobile.svg" alt="">
-  </div>
+
   <nav>
     <button class="step active">1</button>
     <button class="step">2</button>
@@ -30,7 +28,10 @@
   </nav>
 
   <main>
-    <!-- STEP 3 -->
+    <div class="background">
+      <img src="assets\images\bg-sidebar-mobile.svg" alt="">
+    </div>
+    <!-- STEP 1 -->
     <div class="step-1 innactive">
       <div class="description">
         <h1>Personal info</h1>
@@ -58,7 +59,7 @@
 
 
     <!-- STEP 2 -->
-    <div class="step-2 ">
+    <div class="step-2 innactive">
       <div class="description">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
@@ -101,22 +102,65 @@
         <div>Yearly</div>
       </div>
     </div>
-    </div>
+
     <!-- STEP 3 -->
-    <div class="step-3 innactive">
-      <h1>Pick add-ons</h1>
-      <p>Add-ons help enhace your gaming experience.</p>
-    </div>
-    <!-- STEP 4 -->
-    <div class="step-3 innactive">
-      <h1>Finishing up</h1>
-      <p>Double-check everything looks OK before confirming.</p>
-    </div>
+    <div class="step-3 ">
+      <div class="description">
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhace your gaming experience.</p>
+      </div>
+
+      <label for="add-on-online-service">
+        <form class="input-addon active">
+          <div class="row-container">
+            <input type="checkbox" id="add-on-online-service">
+            <div class="about">
+              <!-- <label for="add-on-online-service">Online service</label> -->
+              <h2>Online service</h2>
+              <p>Access to multiplayer games</p>
+            </div>
+          </div>
+          <div class="price">+$1/mo</div>
+        </form>
+      </label>
+      <label for="add-on-larger-storage">
+        <form class="input-addon ">
+          <div class="row-container">
+            <input type="checkbox" id="add-on-larger-storage">
+            <div class="input-checkbox">
+            </div>
+            <div class="about">
+              <!-- <label for="add-on-online-service">Online service</label> -->
+              <h2>Larger storage</h2>
+              <p>Extra 1TB of cloud save</p>
+            </div>
+          </div>
+          <div class="price">+$2/mo</div>
+        </form>
+      </label>
+      <label for="add-on-custom-profile">
+        <form class="input-addon ">
+          <div class="row-container">
+            <input type="checkbox" id="add-on-custom-profile">
+            <div class="about">
+              <!-- <label for="add-on-online-service">Online service</label> -->
+              <h2>Customizable profile</h2>
+              <p>Custom theme on your profile</p>
+            </div>
+          </div>
+          <div class="price">+$2/mo</div>
+        </form>
+      </label>
+
+
+      <!-- STEP 4 -->
+      <div class="step-4 innactive">
+        <h1>Finishing up</h1>
+        <p>Double-check everything looks OK before confirming.</p>
+      </div>
 
 
 
-    <!-- STEP 2 -->
-    <div class="step-2 innactive">
 
   </main>
 
