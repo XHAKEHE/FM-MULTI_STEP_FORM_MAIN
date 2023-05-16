@@ -32,7 +32,7 @@
       <img src="assets\images\bg-sidebar-mobile.svg" alt="">
     </div>
     <!-- STEP 1 -->
-    <div class="step-1 innactive">
+    <div class="step-1 ">
       <div class="description">
         <h1>Personal info</h1>
         <p>Please provide your name, email address and phone number</p>
@@ -43,17 +43,17 @@
           <p>Name</p>
           <div class="warning">This field is required!</div>
         </div>
-        <input class="warning" type="text">
+        <input class="warning" type="text" placeholder="e.g. Stephen King">
         <div class="input-data">
           <p>Email Address</p>
           <div class="warning innactive">This field is required!</div>
         </div>
-        <input type="text">
+        <input type="text" placeholder="e.g. stephenking@lorem.com">
         <div class="input-data">
           <p>Phone Number</p>
           <div class="warning innactive">This field is required!</div>
         </div>
-        <input type="text">
+        <input type="text" placeholder="e.g. +1 234 567 890">
       </div>
     </div>
 
@@ -71,9 +71,10 @@
         <div>
           <h2>Arcade</h2>
           <p>$9/mo</p>
+          <p class="bonus">2 months free</p>
         </div>
       </div>
-
+      
       <div class="input-plan">
         <div class="icon">
           <img src="assets\images\icon-advanced.svg" alt="">
@@ -81,9 +82,10 @@
         <div>
           <h2>Advanced</h2>
           <p>$12/mo</p>
+          <p class="bonus">2 months free</p>
         </div>
       </div>
-
+      
       <div class="input-plan">
         <div class="icon">
           <img src="assets\images\icon-pro.svg" alt="">
@@ -91,6 +93,7 @@
         <div>
           <h2>Pro</h2>
           <p>$15/mo</p>
+          <p class="bonus">2 months free</p>
         </div>
       </div>
       <div class="period-switch">
@@ -104,14 +107,14 @@
     </div>
 
     <!-- STEP 3 -->
-    <div class="step-3 ">
+    <div class="step-3 innactive">
       <div class="description">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhace your gaming experience.</p>
       </div>
 
       <label for="add-on-online-service">
-        <form class="input-addon active">
+        <form class="row-container input-addon active">
           <div class="row-container">
             <input type="checkbox" id="add-on-online-service">
             <div class="input-checkbox">
@@ -126,7 +129,7 @@
       </label>
 
       <label for="add-on-larger-storage">
-        <form class="input-addon ">
+        <form class="row-container input-addon ">
           <div class="row-container">
             <input type="checkbox" id="add-on-larger-storage">
             <div class="input-checkbox">
@@ -141,7 +144,7 @@
       </label>
 
       <label for="add-on-custom-profile">
-        <form class="input-addon ">
+        <form class="row-container input-addon ">
           <div class="row-container">
             <input type="checkbox" id="add-on-custom-profile">
             <div class="input-checkbox">
@@ -154,14 +157,40 @@
           <div class="price">+$2/mo</div>
         </form>
       </label>
+    </div>
 
-
-      <!-- STEP 4 -->
-      <div class="step-4 innactive">
+    <!-- STEP 4 -->
+    <div class="step-4 innactive">
+      <div class="description">
         <h1>Finishing up</h1>
         <p>Double-check everything looks OK before confirming.</p>
       </div>
+      <div class="summary">
+        <div class="row-container chosen-item">
+          <div>
+            <h2>Arcade (Monthly)</h2>
+            <p class="change">Change</p>
+          </div>
+          <div class="plan-price">
+            $9/mo
+          </div>
+        </div>
+        <hr>
+        <div class="row-container chosen-item">
+          <div>Online service</div>
+          <div class="addon-price">+$1/mo</div>
+        </div>
+        <div class="row-container chosen-item">
+          <div>Larger storage</div>
+          <div class="addon-price">+$2/mo</div>
+        </div>
+      </div>
 
+      <div class="row-container total">
+        <div>Total (per month)</div>
+        <div class="total-price">+$12/mo</div>
+      </div>
+    </div>
 
 
 
@@ -171,7 +200,7 @@
   <footer>
     <div class="step-btns">
       <button class="prev-step">Go Back</button>
-      <button class="next-step">Next step</button>
+      <button class="next-step final">Next step</button>
     </div>
     <div>
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
