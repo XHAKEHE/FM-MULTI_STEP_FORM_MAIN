@@ -21,16 +21,43 @@
 <body>
 
   <nav>
-    <button class="step active">1</button>
-    <button class="step">2</button>
-    <button class="step">3</button>
-    <button class="step">4</button>
+    <div class="step">
+      <button class="active">1</button>
+      <div class="step-desc">
+        <p>Step 1</p>
+        <h3>your info</h3>
+      </div>
+    </div>
+    <div class="step">
+      <button class="">2</button>
+      <div class="step-desc">
+        <p>Step 2</p>
+        <h3>select plan</h3>
+      </div>
+    </div>
+    <div class="step">
+      <button class="">3</button>
+      <div class="step-desc">
+        <p>Step 3</p>
+        <h3>add-ons</h3>
+      </div>
+    </div>
+    <div class="step">
+      <button class="">4</button>
+      <div class="step-desc">
+        <p>Step 4</p>
+        <h3>summary</h3>
+      </div>
+    </div>
+
+
+
   </nav>
 
   <main>
-    <div class="background">
+    <!-- <div class="background">
       <img src="assets\images\bg-sidebar-mobile.svg" alt="">
-    </div>
+    </div> -->
     <!-- STEP 1 -->
     <div class="step-1 innactive">
       <div class="description">
@@ -64,36 +91,38 @@
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
       </div>
-      <div class="input-plan active">
-        <div class="icon">
-          <img src="assets\images\icon-arcade.svg" alt="">
+      <div class="plan-container">
+        <div class="input-plan active">
+          <div class="icon">
+            <img src="assets\images\icon-arcade.svg" alt="">
+          </div>
+          <div>
+            <h2>Arcade</h2>
+            <p>$9/mo</p>
+            <p class="bonus">2 months free</p>
+          </div>
         </div>
-        <div>
-          <h2>Arcade</h2>
-          <p>$9/mo</p>
-          <p class="bonus">2 months free</p>
-        </div>
-      </div>
 
-      <div class="input-plan">
-        <div class="icon">
-          <img src="assets\images\icon-advanced.svg" alt="">
+        <div class="input-plan">
+          <div class="icon">
+            <img src="assets\images\icon-advanced.svg" alt="">
+          </div>
+          <div>
+            <h2>Advanced</h2>
+            <p>$12/mo</p>
+            <p class="bonus">2 months free</p>
+          </div>
         </div>
-        <div>
-          <h2>Advanced</h2>
-          <p>$12/mo</p>
-          <p class="bonus">2 months free</p>
-        </div>
-      </div>
 
-      <div class="input-plan">
-        <div class="icon">
-          <img src="assets\images\icon-pro.svg" alt="">
-        </div>
-        <div>
-          <h2>Pro</h2>
-          <p>$15/mo</p>
-          <p class="bonus">2 months free</p>
+        <div class="input-plan">
+          <div class="icon">
+            <img src="assets\images\icon-pro.svg" alt="">
+          </div>
+          <div>
+            <h2>Pro</h2>
+            <p>$15/mo</p>
+            <p class="bonus">2 months free</p>
+          </div>
         </div>
       </div>
       <div class="period-switch">
@@ -193,7 +222,7 @@
     </div>
 
     <!-- STEP 5 THANK YOU -->
-    <div class="step-5">
+    <div class="step-5 ">
       <img src="assets\images\icon-thank-you.svg" alt="">
       <h1>Thank you!</h1>
       <p> Thanks for confirming your subscription! We hope you have fun
@@ -202,14 +231,14 @@
 
     </div>
 
+    <div class="step-btns">
+      <button class="prev-step">Go Back</button>
+      <button class="next-step">Next step</button>
+    </div>
   </main>
 
 
   <footer>
-    <div class="step-btns">
-      <button class="prev-step">Go Back</button>
-      <button class="next-step final">Next step</button>
-    </div>
     <div>
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
       Coded by <a href="#">Patrick</a>.

@@ -12,6 +12,8 @@ $Magnolia: hsl(217, 100%, 97%);
 $Alabaster: hsl(231, 100%, 99%);
 $White: hsl(0, 0%, 100%);
 
+$desktop-width-bp: 900px;
+
 *,
 *::after,
 *::before {
@@ -19,14 +21,34 @@ $White: hsl(0, 0%, 100%);
 	padding: 0;
 	box-sizing: border-box;
 }
+html {
+	height: 100%;
+	background-color: $Light-gray;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 body {
 	font-family: 'Ubuntu', sans-serif;
+
 	background-color: $Light-gray;
+	color: $Cool-gray;
 
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+
+	@media (min-width: $desktop-width-bp) {
+		flex-direction: row;
+		background-color: $White;
+		width: 1000px;
+		height: 600px;
+		margin: 1rem;
+		padding: 1rem;
+		border-radius: 1rem;
+	}
 }
 
 h1 {
@@ -60,35 +82,78 @@ label {
 }
 
 nav {
-	height: 4rem;
-	margin-top: 2rem;
+	position: absolute;
+	height: 30rem;
+	width: 100%;
 	display: flex;
+	padding: 1rem;
+	padding-top: 2rem;
 	justify-content: center;
-	align-items: center;
+	// align-items: center;
+	background: no-repeat url('/assets/images/bg-sidebar-mobile.svg');
+	background-size: contain;
 	.step {
-		color: $White;
-		font-weight: 600;
-		margin: 0.8rem;
-		width: 2rem;
-		height: 2rem;
-		border: 1px solid $Cool-gray;
-		border-radius: 50%;
-		background: none;
-		cursor: pointer;
+		button {
+			color: $White;
+			font-weight: 600;
+			margin: 0.6rem;
+			width: 2rem;
+			height: 2rem;
+			border: 1px solid $Cool-gray;
+			border-radius: 50%;
+			background: none;
+			cursor: pointer;
+		}
+		.active {
+			background-color: $Light-blue;
+			color: $Marine-blue;
+		}
+		.step-desc {
+			display: none;
+			text-transform: uppercase;
+			font-size: 0.8rem;
+			p {
+				margin: 0;
+			}
+			h3 {
+				color: $White;
+			}
+		}
 	}
-	.active {
-		background-color: $Light-blue;
-		color: $Marine-blue;
+
+	@media (min-width: $desktop-width-bp) {
+		position: static;
+		height: 100%;
+		width: 274px;
+		background: no-repeat url('/assets/images/bg-sidebar-desktop.svg');
+		background-size: cover;
+		border-radius: 0.5rem;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: start;
+		.step {
+			margin: 0.6rem;
+			display: flex;
+			flex-direction: row;
+			.step-desc {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+		}
 	}
 }
+
 main {
+	z-index: 2;
+	max-width: 800px;
+
 	background-color: $White;
-	color: $Cool-gray;
 	margin: 1rem;
-	margin-top: 2rem;
+	margin-top: 7rem;
 	margin-bottom: 3rem;
 	padding: 1rem;
-
 	border-radius: 1rem;
 
 	display: flex;
@@ -108,12 +173,16 @@ main {
 			width: 100%;
 		}
 	}
-	.description {
-		width: 90%;
-	}
+
 	.input-container {
-		width: 90%;
 		margin-top: 1rem;
+	}
+
+	@media (min-width: $desktop-width-bp) {
+		margin: 5rem;
+		height: 100%;
+		justify-content: space-around;
+		width: 40rem;
 	}
 	.step-1 {
 		input {
@@ -177,6 +246,23 @@ main {
 		.active {
 			border-color: $Purplish-blue;
 			background-color: $Magnolia;
+		}
+		@media (min-width: $desktop-width-bp) {
+			.plan-container {
+				display: flex;
+				.input-plan {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: start;
+					padding: 1rem;
+					height: 10rem;
+					width: 9rem;
+					.icon {
+						margin: 0;
+					}
+				}
+			}
 		}
 		.period-switch {
 			display: flex;
@@ -267,12 +353,18 @@ main {
 			border-color: $Marine-blue;
 			background-color: $Magnolia;
 		}
+		@media (min-width: $desktop-width-bp) {
+			width: 100%;
+			.input-addon {
+				height: 5rem;
+			}
+		}
 	}
 	.step-4 {
 		.summary {
 			background-color: $Magnolia;
 			border-radius: 0.8rem;
-			margin: 1rem;
+			margin: 1rem 0;
 			padding: 0.2rem 1rem;
 			.chosen-item {
 				justify-content: space-between;
@@ -295,7 +387,7 @@ main {
 			}
 		}
 		.total {
-			margin: 1rem;
+			margin: 1rem 0;
 			padding: 0.2rem 1rem;
 			justify-content: space-between;
 			.total-price {
@@ -304,11 +396,11 @@ main {
 				font-size: 1.2rem;
 			}
 		}
+		@media (min-width: $desktop-width-bp) {
+			width: 100%;
+		}
 	}
 	.step-5 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		text-align: center;
 		margin: 4rem 0.2rem;
@@ -322,19 +414,14 @@ main {
 			line-height: 1.6rem;
 		}
 	}
-}
-footer {
-	position: fixed;
-	bottom: 0px;
-	width: 100%;
-	bottom: 0.1vh;
-	font-size: 11px;
-	text-align: center;
-	background-color: #fff;
 	.step-btns {
-		display: flex;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
 		// display: none;
+		display: flex;
 		justify-content: space-between;
+		background-color: $Alabaster;
 
 		button {
 			margin: 1rem;
@@ -355,7 +442,20 @@ footer {
 		.final {
 			background-color: $Purplish-blue;
 		}
+		@media (min-width: $desktop-width-bp) {
+			position: static;
+		}
 	}
+}
+footer {
+	z-index: 2;
+	position: absolute;
+	bottom: 0;
+
+	height: 1rem;
+
+	font-size: 11px;
+	text-align: center;
 	a {
 		color: hsl(228, 45%, 44%);
 	}
