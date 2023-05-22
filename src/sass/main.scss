@@ -148,7 +148,6 @@ nav {
 main {
 	z-index: 2;
 	max-width: 800px;
-
 	background-color: $White;
 	margin: 1rem;
 	margin-top: 7rem;
@@ -185,6 +184,7 @@ main {
 		width: 40rem;
 	}
 	.step-1 {
+		height: 24rem;
 		input {
 			color: $Marine-blue;
 			margin-bottom: 2rem;
@@ -214,6 +214,8 @@ main {
 		}
 	}
 	.step-2 {
+		height: 24rem;
+
 		.input-plan {
 			display: flex;
 			align-items: center;
@@ -311,6 +313,8 @@ main {
 		}
 	}
 	.step-3 {
+		height: 24rem;
+
 		.input-addon {
 			justify-content: space-between;
 			padding: 0.4rem;
@@ -361,6 +365,8 @@ main {
 		}
 	}
 	.step-4 {
+		height: 24rem;
+
 		.summary {
 			background-color: $Magnolia;
 			border-radius: 0.8rem;
