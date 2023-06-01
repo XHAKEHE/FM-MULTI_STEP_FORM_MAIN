@@ -1,5 +1,7 @@
 let navSteps
 let mainSteps
+let prevBtn
+let nextBtn
 
 let activeIndex
 
@@ -16,34 +18,66 @@ const prepareDOMElements = () => {
 		document.querySelector('main .step-3'),
 		document.querySelector('main .step-4'),
 	]
+	prevBtn = document.querySelector('.prev-step')
+	nextBtn = document.querySelector('.next-step')
 }
 
 const prepareDOMEvents = () => {
-	navSteps.forEach(step => step.addEventListener('click', stepSelect))
+	navSteps.forEach(step => step.addEventListener('click', navStepSelect))
+	nextBtn.addEventListener('click', stepNext)
+	prevBtn.addEventListener('click', stepPrev)
 }
 
 const test = () => {
-	console.log(mainSteps)
+	// console.log(navSteps)
+	console.log(currentStep())
 }
 
-const stepSelect = e => {
-	navSteps.forEach(navStep => navStep.classList.remove('active'))
-	e.target.classList.add('active')
-
+const currentStep = () => {
 	for (let i = 0; i < navSteps.length; i++) {
 		if (navSteps[i].classList.contains('active')) {
-			activeIndex = i
-			console.log(activeIndex)
+			// console.log(i)
+			return i
 		}
 	}
-	mainSteps.forEach(mainStep => mainStep.classList.add('innactive'))
-	mainSteps[activeIndex].classList.remove('innactive')
+}
 
-	// array.forEach(mainStep => mainStep.classList.remove() {
-	// console.log(navSteps.indexOf(e.target))
+const activateStep = forward => {
+	navSteps.forEach(navStep => navStep.classList.remove('active'))
+	navSteps[forward].classList.add('active')
+	mainSteps.forEach(mainStep => mainStep.classList.add('innactive'))
+	mainSteps[forward].classList.remove('innactive')
+
+	if (forward != 0) {
+		prevBtn.classList.remove('blank')
+	} else {
+		prevBtn.classList.add('blank')
+	}
+
+	if (forward == 3) {
+		nextBtn.textContent = 'Confirm'
+	} else {
+		nextBtn.textContent = 'Next step'
+	}
+}
+
+const stepNext = () => {
+	if (currentStep() < 3) {
+		activateStep(currentStep() + 1)
+	}
+}
+const stepPrev = () => {
+	if (currentStep() > 0) {
+		activateStep(currentStep() - 1)
+	}
+}
+
+const navStepSelect = e => {
+	activateStep(e.target.textContent - 1)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 	main()
 	test()
+	currentStep()
 })
