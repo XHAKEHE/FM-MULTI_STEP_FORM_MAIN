@@ -2,6 +2,8 @@ let navSteps
 let mainSteps
 let prevBtn
 let nextBtn
+let firstStepInputs
+let firstStepWarnings
 
 let activeIndex
 
@@ -20,18 +22,27 @@ const prepareDOMElements = () => {
 	]
 	prevBtn = document.querySelector('.prev-step')
 	nextBtn = document.querySelector('.next-step')
+
+	firstStepInputs = document.querySelectorAll('.step-1 input')
+	firstStepWarnings = document.querySelectorAll('.step-1 div.warning')
 }
 
 const prepareDOMEvents = () => {
 	navSteps.forEach(step => step.addEventListener('click', navStepSelect))
 	nextBtn.addEventListener('click', stepNext)
 	prevBtn.addEventListener('click', stepPrev)
+	// firstStepInputs.forEach(fSI => fSI.addEventListener('click', ifEmpty))
+	nextBtn.addEventListener('click', ifEmpty)
 }
 
 const test = () => {
 	// console.log(navSteps)
-	console.log(currentStep())
+	// console.log(currentStep())
+	console.log(firstStepInputs)
+	console.log(firstStepWarnings)
 }
+
+//STEP NAVIGATION
 
 const currentStep = () => {
 	for (let i = 0; i < navSteps.length; i++) {
@@ -56,13 +67,15 @@ const activateStep = forward => {
 
 	if (forward == 3) {
 		nextBtn.textContent = 'Confirm'
+		nextBtn.style.backgroundColor = 'hsl(228, 100%, 84%)'
 	} else {
 		nextBtn.textContent = 'Next step'
+		nextBtn.style.backgroundColor = 'hsl(213, 96%, 18%)'
 	}
 }
 
 const stepNext = () => {
-	if (currentStep() < 3) {
+	if (currentStep() < 3 && ifEmpty() == true) {
 		activateStep(currentStep() + 1)
 	}
 }
@@ -74,6 +87,25 @@ const stepPrev = () => {
 
 const navStepSelect = e => {
 	activateStep(e.target.textContent - 1)
+}
+
+// 1 STEP
+
+const ifEmpty = () => {
+	let wrongInputs = 0
+	for (let i = 0; i < firstStepInputs.length; i++) {
+		if (firstStepInputs[i].value.trim().length != 0) {
+			firstStepWarnings[i].classList.add('innactive')
+			firstStepInputs[i].classList.remove('warning')
+		} else {
+			firstStepWarnings[i].classList.remove('innactive')
+			firstStepInputs[i].classList.add('warning')
+			wrongInputs++
+		}
+	}
+	if (wrongInputs == 0) {
+		return true
+	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
