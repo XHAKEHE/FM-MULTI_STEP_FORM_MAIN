@@ -2,10 +2,13 @@ let navSteps
 let mainSteps
 let prevBtn
 let nextBtn
-let firstStepInputs
-let firstStepWarnings
 
-let activeIndex
+let selections = {}
+
+let step1Inputs
+let step1Warnings
+let step2Inputs
+let step2Switch
 
 const main = () => {
 	prepareDOMElements()
@@ -23,25 +26,25 @@ const prepareDOMElements = () => {
 	prevBtn = document.querySelector('.prev-step')
 	nextBtn = document.querySelector('.next-step')
 
-	firstStepInputs = document.querySelectorAll('.step-1 input')
-	firstStepWarnings = document.querySelectorAll('.step-1 div.warning')
+	step1Inputs = document.querySelectorAll('.step-1 input')
+	step1Warnings = document.querySelectorAll('.step-1 div.warning')
+
+	step2Inputs = document.querySelectorAll('.step-2 .input-plan')
+	step2Switch = document.querySelector('.step-2 .period-switch')
 }
 
 const prepareDOMEvents = () => {
 	navSteps.forEach(step => step.addEventListener('click', navStepSelect))
 	nextBtn.addEventListener('click', stepNext)
 	prevBtn.addEventListener('click', stepPrev)
-	// firstStepInputs.forEach(fSI => fSI.addEventListener('click', ifEmpty))
 	nextBtn.addEventListener('click', ifEmpty)
+	// step2Inputs.forEach(plan => plan.addEventListener('click', console.log('step2 input dziala')))
+	step2Inputs.forEach(plan => plan.addEventListener('click', planSelect))
+	step2Switch.querySelector('input').addEventListener('click', periodSelect)
 }
 
-const test = () => {
-	// console.log(navSteps)
-	// console.log(currentStep())
-	console.log(firstStepInputs)
-	console.log(firstStepWarnings)
-}
-
+const test = () => {}
+// console.log(step2Inputs)
 //STEP NAVIGATION
 
 const currentStep = () => {
@@ -93,19 +96,47 @@ const navStepSelect = e => {
 
 const ifEmpty = () => {
 	let wrongInputs = 0
-	for (let i = 0; i < firstStepInputs.length; i++) {
-		if (firstStepInputs[i].value.trim().length != 0) {
-			firstStepWarnings[i].classList.add('innactive')
-			firstStepInputs[i].classList.remove('warning')
+	for (let i = 0; i < step1Inputs.length; i++) {
+		if (step1Inputs[i].value.trim().length != 0) {
+			step1Warnings[i].classList.add('innactive')
+			step1Inputs[i].classList.remove('warning')
 		} else {
-			firstStepWarnings[i].classList.remove('innactive')
-			firstStepInputs[i].classList.add('warning')
+			step1Warnings[i].classList.remove('innactive')
+			step1Inputs[i].classList.add('warning')
 			wrongInputs++
 		}
 	}
 	if (wrongInputs == 0) {
 		return true
+	} else false
+}
+
+// 2 STEP
+const addActive = input => {
+	input.classList.add('active')
+}
+const removeActive = input => {
+	input.classList.remove('active')
+}
+
+const planSelect = e => {
+	step2Inputs.forEach(input => removeActive(input))
+	addActive(e.target)
+	console.log(e.target);
+	let planName = e.target.querySelector('h2').textContent
+	selections.plan = planName
+	console.log(selections)
+}
+
+const periodSelect = () => {
+	if (step2Switch.querySelector('input').checked) {
+		selections.period = 'Yearly'
+	} else {
+		console.log('miesiecznie')
+		selections.period = 'Monthly'
 	}
+	console.log(selections)
+	// console.log(step2Switch.querySelector('input').checked)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
