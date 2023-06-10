@@ -144,26 +144,27 @@ const removeActive = input => {
 const ifCorrect1 = () => {
 	let wrongInputs = 0
 	for (let i = 0; i < step1Inputs.length; i++) {
-		if (step1Inputs[i].value.trim().length != 0) {
-			step1Warnings[i].classList.add('innactive')
-			step1Inputs[i].classList.remove('warning')
-		} else {
+		if (step1Inputs[i].value.trim().length == 0) {
 			step1Warnings[i].classList.remove('innactive')
 			step1Inputs[i].classList.add('warning')
 			wrongInputs++
+		} else {
+			step1Warnings[i].classList.add('innactive')
+			step1Inputs[i].classList.remove('warning')
 		}
 	}
 	if (wrongInputs == 0) {
 		return true
-	} else false
+	} else return false
 }
 
 // 2 STEP
 
 const planSelect = e => {
 	step2Inputs.forEach(input => removeActive(input))
-	addActive(e.target)
-	let planName = e.target.querySelector('h2').textContent
+	let inputPlan = e.target.closest('.input-plan')
+	addActive(inputPlan)
+	let planName = inputPlan.querySelector('h2').textContent
 	selections.plan = planName
 	console.log(selections)
 }
