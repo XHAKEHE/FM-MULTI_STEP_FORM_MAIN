@@ -16,6 +16,7 @@ let step2Inputs
 let step2Switch
 let step3Checkboxes
 let step4Summary
+let step4Total
 
 const main = () => {
 	prepareDOMElements()
@@ -40,7 +41,9 @@ const prepareDOMElements = () => {
 	step2Switch = document.querySelector('.step-2 .period-switch')
 
 	step3Checkboxes = document.querySelectorAll('.step-3 input')
+
 	step4Summary = document.querySelector('.step-4 .summary')
+	step4Total = document.querySelector('.step-4 .total')
 }
 
 const prepareDOMEvents = () => {
@@ -97,7 +100,6 @@ const stepNext = () => {
 			if (ifCorrect3() == false && currentStep() == 2) {
 				console.log('warunek 3 niespelniony')
 			} else {
-				sumUp()
 				activateStep(currentStep() + 1)
 			}
 		}
@@ -197,6 +199,7 @@ const ifCorrect2 = () => {
 	if (selections.plan === undefined || selections.period === undefined) {
 		return false
 	} else {
+		sumUp()
 		return true
 	}
 }
@@ -237,31 +240,57 @@ const ifCorrect3 = () => {
 
 const sumUp = () => {
 	let planPrices
+	let planPrice
 	let addonPrices
+	let periodShortcut
 	if (selections.period == 'Yearly') {
 		planPrices = planPricesYr
-		addonPrices = planPricesYr
+		addonPrices = addonPricesYr
+		periodShortcut = 'yr'
 	} else {
 		planPrices = planPricesMo
-		addonPrices = planPricesMo
+		addonPrices = addonPricesMo
+		periodShortcut = 'mo'
 	}
-
+	if (selections.plan === 'Arcade') {
+		planPrice = planPrices[0]
+	}
+	if (selections.plan === 'Advanced') {
+		planPrice = planPrices[1]
+	}
+	if (selections.plan === 'Pro') {
+		planPrice = planPrices[2]
+	}
 	let selectedPlan = step4Summary.querySelector('h2')
 	selectedPlan.textContent = selections.plan + ' (' + selections.period + ')'
-	step4Summary.querySelector('.plan-price').textContent = planPrices[0]
+	step4Summary.querySelector('.plan-price').textContent = planPrice
+	let totalCost = Number(planPrice.slice(1, -3))
+
+	let addon1 = step4Summary.querySelector('.addon1')
+	let addon2 = step4Summary.querySelector('.addon2')
+	let addon3 = step4Summary.querySelector('.addon3')
+	let addons = [addon1, addon2, addon3]
+	addons.forEach(addon => addon.classList.add('innactive'))
 
 	if (selections.addon1 != undefined) {
 		addon1.classList.remove('innactive')
 		addon1.querySelector('.addon-price').textContent = addonPrices[0]
+		totalCost = totalCost + Number(addonPrices[0].slice(1, -3))
 	}
 	if (selections.addon2 != undefined) {
 		addon2.classList.remove('innactive')
 		addon2.querySelector('.addon-price').textContent = addonPrices[1]
+		totalCost = totalCost + Number(addonPrices[1].slice(1, -3))
 	}
 	if (selections.addon3 != undefined) {
 		addon3.classList.remove('innactive')
 		addon3.querySelector('.addon-price').textContent = addonPrices[2]
+		totalCost = totalCost + Number(addonPrices[2].slice(1, -3))
 	}
+
+	step4Total.querySelector('div').textContent = 'Total (per ' + selections.period.slice(0, -2) + ')'
+	step4Total.querySelector('.total-price').textContent = '$' + totalCost + '/' + periodShortcut
+	console.log(totalCost)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
