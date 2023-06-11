@@ -30,6 +30,7 @@ const prepareDOMElements = () => {
 		document.querySelector('main .step-2'),
 		document.querySelector('main .step-3'),
 		document.querySelector('main .step-4'),
+		document.querySelector('main .step-5'),
 	]
 	prevBtn = document.querySelector('.prev-step')
 	nextBtn = document.querySelector('.next-step')
@@ -47,12 +48,11 @@ const prepareDOMElements = () => {
 }
 
 const prepareDOMEvents = () => {
-	navSteps.forEach(step => step.addEventListener('click', navStepSelect))
+	// navSteps.forEach(step => step.addEventListener('click', navStepSelect))
 	nextBtn.addEventListener('click', stepNext)
 	prevBtn.addEventListener('click', stepPrev)
 	step2Inputs.forEach(plan => plan.addEventListener('click', planSelect))
 	step2Switch.querySelector('input').addEventListener('click', periodSelect)
-	// step3Checkboxes.querySelector('input[type="checkbox"]').addEventListener('click', addOnSelect)
 	step3Checkboxes.forEach(addon => addon.addEventListener('click', addOnSelect))
 	step4Summary.querySelector('.change').addEventListener('click', changePlan)
 }
@@ -62,19 +62,22 @@ const test = () => {}
 //STEP NAVIGATION and START FUNCS
 
 const currentStep = () => {
-	for (let i = 0; i < navSteps.length; i++) {
-		if (navSteps[i].classList.contains('active')) {
-			// console.log(i)
-			return i
-		}
+	for (let i = 0; i < mainSteps.length; i++) {
+		if (mainSteps[i].classList.contains('innactive')) {
+		} else return i
 	}
 }
 
 const activateStep = forward => {
-	navSteps.forEach(navStep => navStep.classList.remove('active'))
-	navSteps[forward].classList.add('active')
 	mainSteps.forEach(mainStep => mainStep.classList.add('innactive'))
 	mainSteps[forward].classList.remove('innactive')
+
+	navSteps.forEach(navStep => navStep.classList.remove('active'))
+	if (forward == 4) {
+		navSteps[3].classList.add('active')
+	} else {
+		navSteps[forward].classList.add('active')
+	}
 
 	if (forward != 0) {
 		prevBtn.classList.remove('blank')
@@ -84,10 +87,18 @@ const activateStep = forward => {
 
 	if (forward == 3) {
 		nextBtn.textContent = 'Confirm'
-		nextBtn.style.backgroundColor = 'hsl(228, 100%, 84%)'
+		nextBtn.style.backgroundColor = 'hsl(243, 100%, 62%)'
 	} else {
 		nextBtn.textContent = 'Next step'
 		nextBtn.style.backgroundColor = 'hsl(213, 96%, 18%)'
+	}
+
+	if (forward == 4) {
+		prevBtn.classList.add('blank')
+		nextBtn.classList.add('blank')
+	} else {
+		prevBtn.classList.remove('blank')
+		nextBtn.classList.remove('blank')
 	}
 }
 
@@ -110,10 +121,6 @@ const stepPrev = () => {
 	if (currentStep() > 0) {
 		activateStep(currentStep() - 1)
 	}
-}
-
-const navStepSelect = e => {
-	activateStep(e.target.textContent - 1)
 }
 
 // COMMON
@@ -175,9 +182,9 @@ const periodSelect = () => {
 
 		step2Inputs.forEach(input => (input.querySelector('.bonus').style.display = 'flex'))
 
-		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = addonPricesYr[0]
-		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = addonPricesYr[1]
-		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = addonPricesYr[2]
+		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = '+ ' + addonPricesYr[0]
+		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = '+ ' + addonPricesYr[1]
+		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = '+ ' + addonPricesYr[2]
 	} else {
 		selections.period = 'Monthly'
 		step2Switch.querySelectorAll('div')[2].classList.toggle('selected')
@@ -189,9 +196,9 @@ const periodSelect = () => {
 
 		step2Inputs.forEach(input => (input.querySelector('.bonus').style.display = 'none'))
 
-		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = addonPricesMo[0]
-		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = addonPricesMo[1]
-		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = addonPricesMo[2]
+		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = '+ ' + addonPricesMo[0]
+		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = '+ ' + addonPricesMo[1]
+		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = '+ ' + addonPricesMo[2]
 	}
 	console.log(selections)
 }
@@ -275,23 +282,22 @@ const sumUp = () => {
 
 	if (selections.addon1 != undefined) {
 		addon1.classList.remove('innactive')
-		addon1.querySelector('.addon-price').textContent = addonPrices[0]
+		addon1.querySelector('.addon-price').textContent = '+' + addonPrices[0]
 		totalCost = totalCost + Number(addonPrices[0].slice(1, -3))
 	}
 	if (selections.addon2 != undefined) {
 		addon2.classList.remove('innactive')
-		addon2.querySelector('.addon-price').textContent = addonPrices[1]
+		addon2.querySelector('.addon-price').textContent = '+' + addonPrices[1]
 		totalCost = totalCost + Number(addonPrices[1].slice(1, -3))
 	}
 	if (selections.addon3 != undefined) {
 		addon3.classList.remove('innactive')
-		addon3.querySelector('.addon-price').textContent = addonPrices[2]
+		addon3.querySelector('.addon-price').textContent = '+' + addonPrices[2]
 		totalCost = totalCost + Number(addonPrices[2].slice(1, -3))
 	}
 
 	step4Total.querySelector('div').textContent = 'Total (per ' + selections.period.slice(0, -2) + ')'
 	step4Total.querySelector('.total-price').textContent = '$' + totalCost + '/' + periodShortcut
-	console.log(totalCost)
 }
 
 const changePlan = () => {

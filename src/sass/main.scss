@@ -60,12 +60,12 @@ h1 {
 h2 {
 	color: $Marine-blue;
 	font-size: 1rem;
-	margin: 0.2rem;
+	margin: 0.25rem;
 }
 
 p {
 	font-weight: 400;
-	margin: 0.2rem;
+	margin: 0.25rem;
 }
 label {
 	cursor: pointer;
@@ -89,7 +89,6 @@ nav {
 	padding: 1rem;
 	padding-top: 2rem;
 	justify-content: center;
-	// align-items: center;
 	background: no-repeat url('/assets/images/bg-sidebar-mobile.svg');
 	background-size: contain;
 	.step {
@@ -99,10 +98,9 @@ nav {
 			margin: 0.6rem;
 			width: 2rem;
 			height: 2rem;
-			border: 1px solid $Cool-gray;
+			border: 1px solid $Light-blue;
 			border-radius: 50%;
 			background: none;
-			cursor: pointer;
 		}
 		.active {
 			background-color: $Light-blue;
@@ -149,10 +147,10 @@ main {
 	z-index: 2;
 	max-width: 800px;
 	background-color: $White;
-	margin: 1rem;
+	margin: 0.8rem;
 	margin-top: 7rem;
 	margin-bottom: 3rem;
-	padding: 1rem;
+	padding: 1.6rem;
 	border-radius: 1rem;
 
 	display: flex;
@@ -173,9 +171,9 @@ main {
 		}
 	}
 
-	.input-container {
-		margin-top: 1rem;
-	}
+	// .input-container {
+	// 	// margin-top: 1rem;
+	// }
 
 	@media (min-width: $desktop-width-bp) {
 		margin: 5rem;
@@ -184,17 +182,17 @@ main {
 		width: 40rem;
 	}
 	.step-1 {
-		height: 24rem;
+		min-height: 24rem;
 		input {
 			color: $Marine-blue;
-			margin-bottom: 2rem;
+			// margin-bottom: 1.4rem;
 			padding: 1rem;
 			width: 100%;
 			height: 2rem;
-			border-radius: 0.6rem;
-			font-weight: 600;
+			border-radius: 0.4rem;
+			font-weight: 500;
 			border: 1px solid $Light-gray;
-			letter-spacing: 0.1rem;
+			letter-spacing: 1px;
 		}
 		.warning {
 			border: 1px solid red;
@@ -203,6 +201,7 @@ main {
 			display: flex;
 			justify-content: space-between;
 			margin-bottom: 0.2rem;
+			margin-top: 1.4rem;
 			font-size: 0.8rem;
 			p {
 				color: $Marine-blue;
@@ -214,7 +213,7 @@ main {
 		}
 	}
 	.step-2 {
-		height: 24rem;
+		min-height: 24rem;
 
 		.input-plan {
 			display: flex;
@@ -225,7 +224,7 @@ main {
 			margin-bottom: 1.4rem;
 			border: 0.1rem solid $Light-gray;
 			background-color: $Alabaster;
-			border-radius: 1rem;
+			border-radius: 0.6rem;
 			cursor: pointer;
 
 			.icon {
@@ -238,6 +237,7 @@ main {
 					height: 100%;
 					width: 100%;
 				}
+
 			}
 			.bonus {
 				display: none;
@@ -285,8 +285,8 @@ main {
 					}
 				}
 				label {
-					width: 60px;
-					height: 30px;
+					width: 50px;
+					height: 20px;
 					border-radius: 99em;
 					position: relative;
 					transition: transform 0.25s ease;
@@ -298,32 +298,32 @@ main {
 						transition: transform 0.25s ease;
 						content: '';
 						display: block;
-						margin: 5px;
-						width: 20px;
-						height: 20px;
+						margin: 3px;
+						width: 14px;
+						height: 14px;
 						background-color: $Alabaster;
 						border-radius: 50%;
 					}
 				}
 			}
 			.selected {
-				font-weight: 600;
+				font-weight: 500;
 				color: $Marine-blue;
 			}
 		}
 	}
 	.step-3 {
-		height: 24rem;
+		min-height: 24rem;
 
 		.input-addon {
 			justify-content: space-between;
 			padding: 0.4rem;
-			margin: 0.4rem;
+			// margin: 0.4rem;
 			margin-top: 1.4rem;
 			margin-bottom: 1.4rem;
 			border: 0.1rem solid $Light-gray;
 			background-color: $Alabaster;
-			border-radius: 1rem;
+			border-radius: 0.6rem;
 
 			input {
 				display: none;
@@ -365,7 +365,7 @@ main {
 		}
 	}
 	.step-4 {
-		height: 24rem;
+		min-height: 24rem;
 
 		.summary {
 			background-color: $Magnolia;
@@ -425,29 +425,29 @@ main {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		// display: none;
 		display: flex;
 		justify-content: space-between;
-		background-color: $Alabaster;
+		background-color: $White;
 		.blank {
 			opacity: 0;
 			pointer-events: none;
 		}
 		button {
 			margin: 1rem;
-			height: 2rem;
+			height: 2.4rem;
 			width: 6rem;
 			background: none;
 			border: none;
 			color: $Cool-gray;
 			font-size: 0.8rem;
-			font-weight: 600;
+			font-weight: 500;
+			letter-spacing: 1px;
 			cursor: pointer;
 		}
 		.next-step {
 			background-color: $Marine-blue;
 			color: $White;
-			border-radius: 0.4rem;
+			border-radius: 0.2rem;
 		}
 		.final {
 			background-color: $Purplish-blue;
