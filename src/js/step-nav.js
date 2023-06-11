@@ -54,6 +54,7 @@ const prepareDOMEvents = () => {
 	step2Switch.querySelector('input').addEventListener('click', periodSelect)
 	// step3Checkboxes.querySelector('input[type="checkbox"]').addEventListener('click', addOnSelect)
 	step3Checkboxes.forEach(addon => addon.addEventListener('click', addOnSelect))
+	step4Summary.querySelector('.change').addEventListener('click', changePlan)
 }
 
 const test = () => {}
@@ -291,6 +292,10 @@ const sumUp = () => {
 	step4Total.querySelector('div').textContent = 'Total (per ' + selections.period.slice(0, -2) + ')'
 	step4Total.querySelector('.total-price').textContent = '$' + totalCost + '/' + periodShortcut
 	console.log(totalCost)
+}
+
+const changePlan = () => {
+	activateStep(1)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
