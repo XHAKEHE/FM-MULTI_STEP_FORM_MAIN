@@ -1,3 +1,8 @@
+let planPricesMo = ['$9/mo', '$12/mo', '$15/mo']
+let planPricesYr = ['$90/yr', '$120/yr', '$150/yr']
+let addonPricesMo = ['$1/mo', '$2/mo', '$2/mo']
+let addonPricesYr = ['$10/yr', '$20/yr', '$20/yr']
+
 let navSteps
 let mainSteps
 let prevBtn
@@ -10,6 +15,7 @@ let step1Warnings
 let step2Inputs
 let step2Switch
 let step3Checkboxes
+let step4Summary
 
 const main = () => {
 	prepareDOMElements()
@@ -34,6 +40,7 @@ const prepareDOMElements = () => {
 	step2Switch = document.querySelector('.step-2 .period-switch')
 
 	step3Checkboxes = document.querySelectorAll('.step-3 input')
+	step4Summary = document.querySelector('.step-4 .summary')
 }
 
 const prepareDOMEvents = () => {
@@ -81,26 +88,6 @@ const activateStep = forward => {
 }
 
 const stepNext = () => {
-	// if (currentStep() < 3 && ifCorrect1() == true) {
-	// 	activateStep(1)
-	// }
-	// if (currentStep() < 3 && ifCorrect2() == true) {
-	// 	activateStep(2)
-	// }
-
-	// if (currentStep() < 3 && ifCorrect3() == true) {
-	// 	activateStep(3)
-	// }
-
-	// if (currentStep() == 0 && ifCorrect1() == true) {
-	// 	activateStep(currentStep() + 1)
-	// }
-	// if (currentStep() == 1 && ifCorrect2() == true) {
-	// 	activateStep(currentStep() + 1)
-	// }
-	// if (currentStep() == 2 && ifCorrect3() == true) {
-	// 	activateStep(currentStep() + 1)
-	// }
 	if (ifCorrect1() == false && currentStep() == 0) {
 		console.log('warunek 1 niespelniony')
 	} else {
@@ -109,7 +96,10 @@ const stepNext = () => {
 		} else {
 			if (ifCorrect3() == false && currentStep() == 2) {
 				console.log('warunek 3 niespelniony')
-			} else activateStep(currentStep() + 1)
+			} else {
+				sumUp()
+				activateStep(currentStep() + 1)
+			}
 		}
 	}
 }
@@ -175,29 +165,30 @@ const periodSelect = () => {
 		step2Switch.querySelectorAll('div')[2].classList.toggle('selected')
 		step2Switch.querySelectorAll('div')[0].classList.toggle('selected')
 
-		step2Inputs[0].querySelectorAll('div p')[0].textContent = '$90/yr'
-		step2Inputs[1].querySelectorAll('div p')[0].textContent = '$120/yr'
-		step2Inputs[2].querySelectorAll('div p')[0].textContent = '$150/yr'
+		// step2Inputs[0].querySelectorAll('div p')[0].textContent = '$90/yr'
+		step2Inputs[0].querySelectorAll('div p')[0].textContent = planPricesYr[0]
+		step2Inputs[1].querySelectorAll('div p')[0].textContent = planPricesYr[1]
+		step2Inputs[2].querySelectorAll('div p')[0].textContent = planPricesYr[2]
 
 		step2Inputs.forEach(input => (input.querySelector('.bonus').style.display = 'flex'))
 
-		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = '$10/yr'
-		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = '$20/yr'
-		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = '$20/yr'
+		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = addonPricesYr[0]
+		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = addonPricesYr[1]
+		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = addonPricesYr[2]
 	} else {
 		selections.period = 'Monthly'
 		step2Switch.querySelectorAll('div')[2].classList.toggle('selected')
 		step2Switch.querySelectorAll('div')[0].classList.toggle('selected')
 
-		step2Inputs[0].querySelectorAll('div p')[0].textContent = '$9/mo'
-		step2Inputs[1].querySelectorAll('div p')[0].textContent = '$12/mo'
-		step2Inputs[2].querySelectorAll('div p')[0].textContent = '$15/mo'
+		step2Inputs[0].querySelectorAll('div p')[0].textContent = planPricesMo[0]
+		step2Inputs[1].querySelectorAll('div p')[0].textContent = planPricesMo[1]
+		step2Inputs[2].querySelectorAll('div p')[0].textContent = planPricesMo[2]
 
 		step2Inputs.forEach(input => (input.querySelector('.bonus').style.display = 'none'))
 
-		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = '$1/mo'
-		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = '$2/mo'
-		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = '$2/mo'
+		step3Checkboxes[0].closest('.input-addon').querySelector('.price').textContent = addonPricesMo[0]
+		step3Checkboxes[1].closest('.input-addon').querySelector('.price').textContent = addonPricesMo[1]
+		step3Checkboxes[2].closest('.input-addon').querySelector('.price').textContent = addonPricesMo[2]
 	}
 	console.log(selections)
 }
@@ -241,6 +232,36 @@ const addOnSelect = e => {
 
 const ifCorrect3 = () => {
 	return true
+}
+// 4 STEP
+
+const sumUp = () => {
+	let planPrices
+	let addonPrices
+	if (selections.period == 'Yearly') {
+		planPrices = planPricesYr
+		addonPrices = planPricesYr
+	} else {
+		planPrices = planPricesMo
+		addonPrices = planPricesMo
+	}
+
+	let selectedPlan = step4Summary.querySelector('h2')
+	selectedPlan.textContent = selections.plan + ' (' + selections.period + ')'
+	step4Summary.querySelector('.plan-price').textContent = planPrices[0]
+
+	if (selections.addon1 != undefined) {
+		addon1.classList.remove('innactive')
+		addon1.querySelector('.addon-price').textContent = addonPrices[0]
+	}
+	if (selections.addon2 != undefined) {
+		addon2.classList.remove('innactive')
+		addon2.querySelector('.addon-price').textContent = addonPrices[1]
+	}
+	if (selections.addon3 != undefined) {
+		addon3.classList.remove('innactive')
+		addon3.querySelector('.addon-price').textContent = addonPrices[2]
+	}
 }
 
 document.addEventListener('DOMContentLoaded', () => {
