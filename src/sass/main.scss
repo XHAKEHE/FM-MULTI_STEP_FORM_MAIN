@@ -94,7 +94,7 @@ nav {
 	.step {
 		button {
 			color: $White;
-			font-weight: 600;
+			font-weight: 700;
 			margin: 0.6rem;
 			width: 2rem;
 			height: 2rem;
@@ -197,6 +197,7 @@ main {
 		.warning {
 			border: 1px solid red;
 		}
+
 		.input-data {
 			display: flex;
 			justify-content: space-between;
@@ -207,6 +208,10 @@ main {
 				color: $Marine-blue;
 			}
 			.warning {
+				color: $Strawberry-red;
+				border: none;
+			}
+			.warning-email {
 				color: $Strawberry-red;
 				border: none;
 			}
@@ -237,7 +242,6 @@ main {
 					height: 100%;
 					width: 100%;
 				}
-
 			}
 			.bonus {
 				display: none;
@@ -381,7 +385,7 @@ main {
 				}
 				.plan-price {
 					color: $Marine-blue;
-					font-weight: 600;
+					font-weight: 500;
 				}
 				.addon-price {
 					color: $Marine-blue;
@@ -399,7 +403,7 @@ main {
 			justify-content: space-between;
 			.total-price {
 				color: $Purplish-blue;
-				font-weight: 600;
+				font-weight: 500;
 				font-size: 1.2rem;
 			}
 		}

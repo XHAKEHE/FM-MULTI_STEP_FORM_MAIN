@@ -12,6 +12,7 @@ let selections = {}
 
 let step1Inputs
 let step1Warnings
+let step1EmailWarning
 let step2Inputs
 let step2Switch
 let step3Checkboxes
@@ -37,6 +38,7 @@ const prepareDOMElements = () => {
 
 	step1Inputs = document.querySelectorAll('.step-1 input')
 	step1Warnings = document.querySelectorAll('.step-1 div.warning')
+	step1EmailWarning = document.querySelector('.step-1 .warning-email')
 
 	step2Inputs = document.querySelectorAll('.step-2 .input-plan')
 	step2Switch = document.querySelector('.step-2 .period-switch')
@@ -104,13 +106,11 @@ const activateStep = forward => {
 
 const stepNext = () => {
 	if (ifCorrect1() == false && currentStep() == 0) {
-		console.log('warunek 1 niespelniony')
 	} else {
 		if (ifCorrect2() == false && currentStep() == 1) {
-			console.log('warunek 2 niespelniony')
+			alert('Please choose your plan before proceeding.')
 		} else {
 			if (ifCorrect3() == false && currentStep() == 2) {
-				console.log('warunek 3 niespelniony')
 			} else {
 				activateStep(currentStep() + 1)
 			}
@@ -152,6 +152,13 @@ const ifCorrect1 = () => {
 			step1Warnings[i].classList.add('innactive')
 			step1Inputs[i].classList.remove('warning')
 		}
+	}
+	if (step1Inputs[1].value.indexOf('@') == -1 && step1Warnings[1].classList.contains('innactive')) {
+		step1EmailWarning.classList.remove('innactive')
+		step1Inputs[1].classList.add('warning')
+		wrongInputs++
+	} else {
+		step1EmailWarning.classList.add('innactive')
 	}
 	if (wrongInputs == 0) {
 		return true
