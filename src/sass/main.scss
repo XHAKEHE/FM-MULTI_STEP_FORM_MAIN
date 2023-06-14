@@ -171,10 +171,6 @@ main {
 		}
 	}
 
-	// .input-container {
-	// 	// margin-top: 1rem;
-	// }
-
 	@media (min-width: $desktop-width-bp) {
 		margin: 5rem;
 		height: 100%;
@@ -322,7 +318,6 @@ main {
 		.input-addon {
 			justify-content: space-between;
 			padding: 0.4rem;
-			// margin: 0.4rem;
 			margin-top: 1.4rem;
 			margin-bottom: 1.4rem;
 			border: 0.1rem solid $Light-gray;
