@@ -15,9 +15,6 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 ## Overview
 
 4-step form component with summary and final page. Component collects necessary personal data via input windows, lets you choose subscription plan with yearly or monthly billing cycle as well as additional modules.
-
-Built with 'mobile first' approach for 375px mobile and 1440px desktop displays.
-
 ### The challenge
 
 Users are able to:
@@ -38,8 +35,9 @@ Users are able to:
 
 ### Built with
 
+- Mobile first approach
 - Semantic HTML5 markup
-- CSS custom properties
+- SCSS properties
 - Flexbox
 - Vanilla JavaScript
 - Optimizing code and images with Gulp
